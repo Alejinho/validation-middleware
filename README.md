@@ -41,7 +41,7 @@ specified in the validator options
 const middleware = validator({email: 'isEmail', password: 'isAlfa'})
 // request.body = {state: 'nonActive', email: 'john@acme.co', password: '12'}
 app.get('/login', (req, res, next) => {
-    // res.body = {email: 'john@acme.co', password: '12'}
+    // req.body = {email: 'john@acme.co', password: '12'}
 })
 ```
 
