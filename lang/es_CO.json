@@ -1,0 +1,6 @@
+{
+  "isMongoId": "El campo {campo} no es un identificador valido.",
+  "isAlpha": "El campo {campo} solo debe contener letras.",
+  "isEmail": "El email no es valido.",
+  "required": "El campo {campo} es obligatorio."
+}
