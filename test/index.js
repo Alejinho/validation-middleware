@@ -10,7 +10,9 @@ describe('Deberia obtener...', function () {
     let middleware = validator({
         cedula: {
             custom: {
-                function: validateLimit,
+                function(value, {maxLimit}, next){
+                    next(value < maxLimit ? 'Range error' : '')
+                },
                 params: {
                     maxLimit: 10
                 },
