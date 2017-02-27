@@ -21,7 +21,11 @@ const VALIDATE = require('validation-middleware').VALIDATE
 const SANITIZE = require('validation-middleware').SANITIZE
 
 validator(
-    {validations},
+    {
+        itemToValidate: {
+            validationFunction: {...}
+        }
+    },
     'request attribute to evaluate, default to "body"',
     'VALIDATE|SANITIZE default to VALIDATE'
 )
@@ -93,7 +97,7 @@ function validateLimit(value, {maxLimit}, next){
 }
 
 let middleware = validator({
-    cedula: {
+    limit: {
         custom: {
             function: validateLimit,
             params: {
@@ -102,6 +106,8 @@ let middleware = validator({
             required: false
         }
     }
+    
+// Evaluating request.params    
 }, 'params')
 ```
 
