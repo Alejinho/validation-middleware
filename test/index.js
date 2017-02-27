@@ -1,6 +1,7 @@
 /**
  * Created by alejandro on 20/02/17.
  */
+'use strict';
 
 const validator = require('../index');
 const sanitize = require('../index').sanitize;

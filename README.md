@@ -1,11 +1,14 @@
 validation-middleware
 ====================
 [![NPM version][npm-badge]](https://www.npmjs.com/package/validation-middleware)
+[![NPM version][npm-badge]](https://www.npmjs.com/package/validation-middleware)
+
 
 Basic request **asynchronous** middleware to sanitize and validate 
 parameters, useful for express. Based on [validator](https://www.npmjs.com/package/validator).
 
 [npm-badge]: https://img.shields.io/npm/v/validation-middleware.svg
+[travis-badge]: https://img.shields.io/travis/Alejinho/validation-middleware.svg
 
 Installing
 ----------

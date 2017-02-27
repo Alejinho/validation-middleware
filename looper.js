@@ -1,6 +1,8 @@
 /**
- * Created by alejandro on 20/02/17.
+ * Created by Alejandro Rivera on 20/02/17.
  */
+
+'use strict';
 
 module.exports = function (array, callback, finish, repeticiones = 3) {
     let source = array
