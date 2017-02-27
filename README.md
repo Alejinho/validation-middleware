@@ -1,7 +1,7 @@
 validation-middleware
 ====================
 [![NPM version][npm-badge]](https://www.npmjs.com/package/validation-middleware)
-[![NPM version][npm-badge]](https://www.npmjs.com/package/validation-middleware)
+[![Build Status][travis-badge]](https://travis-ci.org/Alejinho/validation-middleware)
 
 
 Basic request **asynchronous** middleware to sanitize and validate 
