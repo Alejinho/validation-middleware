@@ -1,6 +1,6 @@
 {
   "name": "validation-middleware",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Basic request middleware to sanitize and validate parameters, useful for express",
   "main": "index.js",
   "directories": {
