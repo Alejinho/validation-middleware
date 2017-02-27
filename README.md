@@ -122,7 +122,6 @@ const middleware = sanitize({
 
 app.use(middleware)
 
-...
 let request = {body: {stringTrue: '   true \n  '}}
 // body.stringTrue.should.be.true
 ```
