@@ -53,7 +53,6 @@ Validation use:
 const validator = require('validation-middleware')
 const i18n = require('validation-middleware').i18n
 
-// TODO Add support, default to es_CO
 i18n('en_US')
 
 const middleware = validator({
@@ -134,6 +133,9 @@ let request = {body: {stringTrue: '   true \n  '}}
 ## TODO
 
 1. Add support for more languages.
++ en_US should have better error messages.
++ See [validator](https://www.npmjs.com/package/validator) and add more error messages for
+other functions.
 2. Support for custom errors.
 3. `process.nextTick` is called every 3 times, it should be customizable.
 4. Make it better.
