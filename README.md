@@ -1,6 +1,7 @@
 validation-middleware
 ====================
 [![NPM version][npm-badge]](https://www.npmjs.com/package/validation-middleware)
+[![NPM downloads][npm-d-badge]](https://www.npmjs.com/package/validation-middleware)
 [![Build Status][travis-badge]](https://travis-ci.org/Alejinho/validation-middleware)
 
 
@@ -8,12 +9,13 @@ Basic request **asynchronous** middleware to sanitize and validate
 parameters, useful for express. Based on [validator](https://www.npmjs.com/package/validator).
 
 [npm-badge]: https://img.shields.io/npm/v/validation-middleware.svg
+[npm-d-badge]: https://img.shields.io/npm/dt/validation-middleware.svg
 [travis-badge]: https://img.shields.io/travis/Alejinho/validation-middleware.svg
 
 Installing
 ----------
 ```sh
-npm install validation-middleware
+npm i validation-middleware -S
 ```
 
 General use:
