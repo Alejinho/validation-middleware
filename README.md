@@ -5,8 +5,8 @@ validation-middleware
 [![Build Status][travis-badge]](https://travis-ci.org/Alejinho/validation-middleware)
 
 
-Basic request **asynchronous** middleware to sanitize and validate 
-parameters, useful for express. Based on [validator](https://www.npmjs.com/package/validator).
+Flexible **asynchronous** validation middleware to sanitize and validate parameters. 
+Based on [validator](https://www.npmjs.com/package/validator).
 
 [npm-badge]: https://img.shields.io/npm/v/validation-middleware.svg
 [npm-d-badge]: https://img.shields.io/npm/dt/validation-middleware.svg
