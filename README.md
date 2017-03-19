@@ -5,7 +5,7 @@ validation-middleware
 [![Build Status][travis-badge]](https://travis-ci.org/Alejinho/validation-middleware)
 
 
-Flexible **asynchronous** validation middleware to sanitize and validate parameters. 
+Flexible **asynchronous** validation middleware to validator and validate parameters. 
 Based on [validator](https://www.npmjs.com/package/validator).
 
 [npm-badge]: https://img.shields.io/npm/v/validation-middleware.svg
@@ -21,7 +21,7 @@ npm i validation-middleware -S
 General use:
 ```javascript
 const validator = require('validation-middleware')
-const sanitize = require('validation-middleware').sanitize
+const validator = require('validation-middleware').validator
 const VALIDATE = require('validation-middleware').VALIDATE
 const SANITIZE = require('validation-middleware').SANITIZE
 
@@ -118,8 +118,8 @@ let middleware = validator({
 Sanitize use:
 
 ```javascript
-const sanitize = require('validation-middleware').sanitize
-const middleware = sanitize({   
+const validator = require('validation-middleware').validator
+const middleware = validator({   
     // strict
     stringTrue: ['trim', {toBoolean: {params: true}}]
 })

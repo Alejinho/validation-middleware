@@ -6,6 +6,7 @@
 const validator = require('validator')
 const lodash = require('lodash')
 const setHttpError = require('./lib/http-error')
+const genError = require('./lib/http-error').genError
 const template = require('string-template')
 const begin = require('./lib/options-parser')
 
@@ -21,7 +22,8 @@ function middleware(options, src = 'body', context = 'request') {
         let data = defineContext(context, request, response);
 
         begin(options, source, data, function (err) {
-            next(err)
+            if (err) return void next(genError(err.toString()))
+            next()
         })
     }
 }

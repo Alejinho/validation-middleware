@@ -4,16 +4,17 @@
 'use strict';
 
 const validator = require('../index');
-const sanitize = require('../index').sanitize;
 const should = require('chai').should();
 
 describe('Deberia obtener...', function () {
     let middleware = validator({
-        cedula: {
+        'user.uuid': {
             custom: {
                 function(value, options, next){
-                    const maxLimit = options.maxLimit
-                    next(value < maxLimit ? 'Range error' : '')
+                    setTimeout(function () {
+                        const maxLimit = options.maxLimit
+                        next(value < maxLimit ? new Error('Range error') : '')
+                    }, 1)
                 },
                 params: {
                     maxLimit: 10
@@ -23,6 +24,13 @@ describe('Deberia obtener...', function () {
         },
         _id: 'isMongoId',
         email: {
+            isAlpha: {
+                required: true,
+                sanitize: [{
+                    normalizeEmail: {
+                    }
+                }]
+            },
             isEmail: {
                 required: false,
             },
@@ -69,11 +77,8 @@ describe('Deberia obtener...', function () {
     });
 
     it('Deberia convertir "true" en un booleano', function (done) {
-        middleware = sanitize({
-            verdadero: {
-                trim: {params: null},
-                toBoolean: {params: true}
-            }
+        middleware = validator({
+            verdadero: ['isBoolean']
         });
         let request = {body: {verdadero: '   true \n  '}};
         middleware(request, {}, err => {
@@ -83,7 +88,7 @@ describe('Deberia obtener...', function () {
     });
 
     it('Deberia eliminar los tags html', function (done) {
-        middleware = sanitize({htmlCode: 'escape'});
+        middleware = validator({htmlCode: 'escape'});
         let request = {body: {htmlCode: '<a href="/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwie8Yfv0a7SAhUD7iYKHdf4D6YQFggnMAE&amp;url=https%3A%2F%2Fwww.troyhunt.com%2Funderstanding-xss-input-sanitisation%2F&amp;usg=AFQjCNEQyocfHRboh5iMfViHnaBmHUBgJg&amp;sig2=MW7iOQh65diz1gZLQd2_Bw" onmousedown="return rwt(this,\'\',\'\',\'\',\'2\',\'AFQjCNEQyocfHRboh5iMfViHnaBmHUBgJg\',\'MW7iOQh65diz1gZLQd2_Bw\',\'0ahUKEwie8Yfv0a7SAhUD7iYKHdf4D6YQFggnMAE\',\'\',\'\',event)" data-href="https://www.troyhunt.com/understanding-xss-input-sanitisation/">Troy Hunt: Understanding XSS – input sanitisation semantics and ...</a>'}};
         middleware(request, {}, err => {
             request.body.htmlCode.should.not.match(/(<|>)/);
