@@ -70,7 +70,10 @@ describe('Deberia obtener...', function () {
 
     it('Deberia convertir "true" en un booleano', function (done) {
         middleware = sanitize({
-            verdadero: [{trim: {params: null}}, {toBoolean: {params: true}}]
+            verdadero: {
+                trim: {params: null},
+                toBoolean: {params: true}
+            }
         });
         let request = {body: {verdadero: '   true \n  '}};
         middleware(request, {}, err => {
