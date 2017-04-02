@@ -18,7 +18,9 @@ exports.setLang = require('./lib/language-manager')
 
 function middleware(options, src = 'body', context = 'request') {
     return function (request, response, next) {
+        // Context of the items to be evaluated
         let source = defineContext(src, request, response);
+        // Reference to elements we want to know to make rule customizable
         let data = defineContext(context, request, response);
 
         begin(options, source, data, function (err) {
@@ -41,5 +43,6 @@ function defineContext(context, request, response) {
     if (context === 'response') {
         return response
     }
+
     return request[context];
 }
