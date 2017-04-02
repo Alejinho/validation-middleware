@@ -7,7 +7,7 @@ validation-middleware
 
 Flexible **asynchronous** validation middleware to sanitize and validate parameters
 at the same time.
-Based on [validator](https://www.npmjs.com/package/validator).
+Based on [validator](validator).
 
 Installing
 ----------
@@ -146,11 +146,16 @@ middleware = validator({
     email: ['required', 'isEmail']
 });
 
-middleware(request, response, err => {
-    err.should.be.instanceOf(ValidationError);
-    err.should.be.instanceOf(Error);
-    err.message.should.match(/The email must be a valid email address\./);
+app.get('/', middleware, function(request, response, err) {
+    ...
 })
+
+app.use(function(request, response, next, error){
+    error.should.be.instanceOf(ValidationError);
+    error.should.be.instanceOf(Error);
+    error.message.should.match(/The email must be a valid email address\./);
+})
+
 ```
 
 
@@ -208,12 +213,12 @@ app.get('/', middleware, function(request, response, next){
 + en_US should have better error messages.
 + See [validator](https://www.npmjs.com/package/validator) and add more error messages for
 other functions.
-2. Support for custom errors.
+2. Support for custom params error.
 3. `process.nextTick` is called every 3 times, it should be customizable.
-4. Make it better.
 
 [npm-badge]: https://img.shields.io/npm/v/validation-middleware.svg
 [npm-d-badge]: https://img.shields.io/npm/dt/validation-middleware.svg
 [travis-badge]: https://img.shields.io/travis/Alejinho/validation-middleware.svg
 [sanitizer-list]: https://www.npmjs.com/package/validator#sanitizers
 [validation-list]: https://www.npmjs.com/package/validator#validators
+[validator]: https://www.npmjs.com/package/validator
