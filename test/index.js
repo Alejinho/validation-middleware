@@ -99,4 +99,29 @@ describe('Deberia obtener...', function () {
             done(err);
         })
     })
+
+    it('El error deberia ser instancia de un nuevo tipo de error', function (done) {
+        function ValidationError(message) {
+            Error.call(this)
+            this.message = message
+        }
+
+        Object.setPrototypeOf(ValidationError.prototype, Error.prototype);
+
+        require('../index').setHttpError({
+            constructor: ValidationError
+        });
+
+        middleware = validator({
+            email: ['required', 'isEmail']
+        });
+
+        middleware({body: {email: 'No es un email'}}, {}, err => {
+            err.should.be.instanceOf(ValidationError);
+            err.should.be.instanceOf(Error);
+            err.message.should.match(/The email must be a valid email address\./);
+            done();
+        })
+    });
+
 });
